@@ -12,56 +12,123 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body>
-    <h1 class="title">Salary Expenses</h1>
+    <h1
+      class="title text-center text-4xl md:text-6xl font-bold pb-3 my-5 text-blue-500"
+    >
+      Salary Expenses
+    </h1>
     <section>
-      <div class="container">
+      <div
+        class="container mx-auto grid md:grid-cols-2 grid-cols-1 md:gap-6 mt-5 md:mb-14"
+      >
         <!-- left side image are here -->
-        <div class="img-div">
-          <img src="./images/saving-money.jpg" alt="Money saving pic" />
+        <div class="h-full">
+          <img
+            class="h-full"
+            src="./images/saving-money.jpg"
+            alt="Money saving pic"
+          />
         </div>
 
         <!-- right side main part are here -->
-        <div class="money-calculation">
+        <div class="bg-gray-100 text-center">
           <div class="form">
-            <h3>Income</h3>
-            <div class="income">
-              <label for="income-input">Income: </label>
-              <input type="text" name="" id="income-input" />
+            <h3 class="font-semibold text-2xl my-5">Income</h3>
+            <div class="w-3/5 mx-auto pr-5 md:pr-2 text-right">
+              <label class="font-medium text-lg mr-3" for="income-input"
+                >Income:
+              </label>
+              <input
+                class="py-2 pl-3 my-2 bg-gray-300 md:w-3/4 w-2/4"
+                type="text"
+                name=""
+                id="income-input"
+              />
             </div>
           </div>
 
           <div class="form">
-            <h3>Expenses</h3>
-            <div class="expenses">
-              <label for="expenses-food-input">Food: </label>
-              <input type="text" name="" id="expenses-food-input" />
+            <h3 class="font-semibold text-2xl my-5">Expenses</h3>
+            <div class="w-3/5 mx-auto pr-5 md:pr-2 text-right">
+              <label class="font-medium text-lg mr-3" for="expenses-food-input"
+                >Food:
+              </label>
+              <input
+                class="py-2 pl-3 my-2 bg-gray-300 md:w-3/4 w-2/4"
+                type="text"
+                name=""
+                id="expenses-food-input"
+              />
             </div>
-            <div class="expenses">
-              <label for="expenses-rent-input">Rent: </label>
-              <input type="text" name="" id="expenses-rent-input" />
+            <div class="w-3/5 mx-auto pr-5 md:pr-2 text-right">
+              <label class="font-medium text-lg mr-3" for="expenses-rent-input"
+                >Rent:
+              </label>
+              <input
+                class="py-2 pl-3 my-2 bg-gray-300 md:w-3/4 w-2/4"
+                type="text"
+                name=""
+                id="expenses-rent-input"
+              />
             </div>
-            <div class="expenses">
-              <label for="expenses-clothes-input">Clothes: </label>
-              <input type="text" name="" id="expenses-clothes-input" />
+            <div class="w-3/5 mx-auto pr-5 md:pr-2 text-right">
+              <label
+                class="font-medium text-lg mr-3"
+                for="expenses-clothes-input"
+                >Clothes:
+              </label>
+              <input
+                class="py-2 pl-3 my-2 bg-gray-300 md:w-3/4 w-2/4"
+                type="text"
+                name=""
+                id="expenses-clothes-input"
+              />
             </div>
             <!-- button are here expenses calculate -->
-            <button id="calculate-btn">Calculate</button>
-            <h3>Total Expenses: <span>5500</span></h3>
-            <h3>Balance: <span>4500</span></h3>
+            <button
+              id="calculate-btn"
+              class="bg-blue-500 text-white px-12 py-3 mt-5 text-white font-semibold rounded-md shadow-lg"
+            >
+              Calculate
+            </button>
+            <h3 class="font-semibold text-2xl my-5">
+              Total Expenses: <span>5500</span>
+            </h3>
+            <h3 class="font-semibold text-2xl my-5">
+              Balance: <span>4500</span>
+            </h3>
           </div>
 
           <!-- save calculation are here -->
           <div>
-            <div class="saving-parcent">
-              <div class="percent">
-                <label for="parcent">Save</label>
-                <input type="text" name="" id="parcent" />
+            <div
+              class="saving-parcent flex items-center justify-center mt-4 mr-8 md:mr-5"
+            >
+              <div class="percent text-right">
+                <label class="font-medium text-lg mr-3" for="parcent"
+                  >Save:
+                </label>
+                <input
+                  class="py-2 w-2/4 bg-gray-300"
+                  type="text"
+                  name=""
+                  id="parcent"
+                />
               </div>
-              <h5>%</h5>
-              <button id="save-btn">Save</button>
+              <h5 class="mx-3">%</h5>
+              <button
+                id="save-btn"
+                class="bg-blue-500 text-white px-12 py-2 text-white font-semibold rounded shadow-lg"
+              >
+                Save
+              </button>
             </div>
-            <h3>Saving Amount: <span>2000</span></h3>
-            <h3>Remaining Balance: <span>2500</span></h3>
+            <h3 class="font-semibold text-2xl my-5">
+              Saving Amount: <span>2000</span>
+            </h3>
+            <h3 class="font-semibold text-2xl my-5">
+              Remaining Balance: <span>2500</span>
+            </h3>
           </div>
         </div>
       </div>
