@@ -10,13 +10,21 @@ function add(idOne, idTwo, constOne, constTwo){
     totalExpensesText.innerText = constTwo;
     afterBalanceText.innerText = constOne-constTwo;
 }
+function errorMessage(messages){
+    const errorMsg = document.getElementById("error-message");
+    errorMsg.innerText= messages
+    errorMsg.style.display = "inline-block";
+    setInterval(function(){
+        errorMsg.style.display= "none"
+    },5000)
+}
 document.getElementById("calculate-btn").addEventListener("click", function(){
     // income amount select are here
     const incomeAmount = getValues("income-input");
     if(incomeAmount<0){
-        alert("Input value is negetive please input positive number")
+        errorMessage("Your income amount are negetive value");
     }else if(isNaN(incomeAmount)){
-        alert("Input any number ");
+        errorMessage("Input any number");
     }else{
         // all cost section are here
         const foodAmount = getValues("food-input");
@@ -24,13 +32,21 @@ document.getElementById("calculate-btn").addEventListener("click", function(){
         const clothesAmount = getValues("clothes-input");
         // total cost calculation are here
         if(foodAmount<0 && rentAmount<0 && clothesAmount<0){
-            alert("all field are negetive, and negetive value are not allow")
-        }else if(foodAmount<0 || rentAmount>0 || clothesAmount>0){
-            alert("food negetive input are not allow")
-        }else if(foodAmount>0 || rentAmount<0 || clothesAmount>0){
-            alert("rent negetive input are not allow")
-        }else if(foodAmount>0 || rentAmount>0 || clothesAmount<0){
-            alert("clothes negetive input are not allow")
+            errorMessage("all field are negetive, and negetive value are not allow")
+        }else if(foodAmount<0 && rentAmount<0 && clothesAmount>0){
+            errorMessage("food and rent negetive input are not allow")
+        }else if(foodAmount<0 && rentAmount>0 && clothesAmount>0){
+            errorMessage("food negetive input are not allow")
+        }else if(foodAmount>0 && rentAmount<0 && clothesAmount>0){
+            errorMessage("rent negetive input are not allow")
+        }else if(foodAmount>0 && rentAmount<0 && clothesAmount<0){
+            errorMessage("rent and clothes negetive input are not allow")
+        }else if(foodAmount<0 && rentAmount>0 && clothesAmount<0){
+            errorMessage("food and clothes negetive input are not allow")
+        }else if(foodAmount>0 && rentAmount>0 && clothesAmount<0){
+            errorMessage("clothes negetive input are not allow")
+        }else if(isNaN(foodAmount) || isNaN(rentAmount) || isNaN(clothesAmount)){
+            errorMessage("Your field is empty, You can not set empty value")
         }else{
             const sumCostAmount = foodAmount+rentAmount+clothesAmount;
             add("total-expenses", "after-balance", incomeAmount,sumCostAmount);
@@ -42,9 +58,9 @@ document.getElementById("save-btn").addEventListener("click", function(){
     const incomeAmount = getValues("income-input");
     const parcentAmount = getValues("parcent");
     if(parcentAmount<0){
-        alert("Input any positive number for in saving percent");
+        errorMessage("Input any positive number for in saving percent");
     }else if(isNaN(parcentAmount)){
-        alert("please any number");
+        errorMessage("please input how much you want to save and only take positive number under 100");
     }else{
         // find text value
         const afterBalText = document.getElementById("after-balance");
