@@ -1,22 +1,22 @@
 // getting values and returns 
-function getValues(inputName){
-    const inputText = document.getElementById(inputName);
+function getValues(inputNames){
+    const inputText = document.getElementById(inputNames);
     return inputAmount = parseFloat(inputText.value);
 }
-function add(idOne, idTwo, constOne, constTwo){
-    const totalExpensesText = document.getElementById(idOne);
-    const afterBalanceText= document.getElementById(idTwo);
+function setInnerText(totalAmount, balance, amountOne, amountTwo){
+    const calculateText = document.getElementById(totalAmount);
+    const totalSubtraction= document.getElementById(balance);
     // values 
-    totalExpensesText.innerText = constTwo;
-    afterBalanceText.innerText = constOne-constTwo;
+    calculateText.innerText = amountTwo;
+    totalSubtraction.innerText = amountOne-amountTwo;
 }
 function errorMessage(messages){
     const errorMsg = document.getElementById("error-message");
-    errorMsg.innerText= messages
+    errorMsg.innerText= messages;
     errorMsg.style.display = "inline-block";
     setInterval(function(){
-        errorMsg.style.display= "none"
-    },5000)
+        errorMsg.style.display= "none";
+    },5000);
 }
 document.getElementById("calculate-btn").addEventListener("click", function(){
     // income amount select are here
@@ -34,25 +34,25 @@ document.getElementById("calculate-btn").addEventListener("click", function(){
         if(foodAmount<0 && rentAmount<0 && clothesAmount<0){
             errorMessage("all field are negetive, and negetive value are not allow")
         }else if(foodAmount<0 && rentAmount<0 && clothesAmount>0){
-            errorMessage("food and rent negetive input are not allow")
+            errorMessage("food and rent negetive input are not allow");
         }else if(foodAmount<0 && rentAmount>0 && clothesAmount>0){
-            errorMessage("food negetive input are not allow")
+            errorMessage("food negetive input are not allow");
         }else if(foodAmount>0 && rentAmount<0 && clothesAmount>0){
-            errorMessage("rent negetive input are not allow")
+            errorMessage("rent negetive input are not allow");
         }else if(foodAmount>0 && rentAmount<0 && clothesAmount<0){
-            errorMessage("rent and clothes negetive input are not allow")
+            errorMessage("rent and clothes negetive input are not allow");
         }else if(foodAmount<0 && rentAmount>0 && clothesAmount<0){
-            errorMessage("food and clothes negetive input are not allow")
+            errorMessage("food and clothes negetive input are not allow");
         }else if(foodAmount>0 && rentAmount>0 && clothesAmount<0){
-            errorMessage("clothes negetive input are not allow")
+            errorMessage("clothes negetive input are not allow");
         }else if(isNaN(foodAmount) || isNaN(rentAmount) || isNaN(clothesAmount)){
-            errorMessage("Your field is empty, You can not set empty value")
+            errorMessage("Your field is empty, You can not set empty value");
         }else{
             const sumCostAmount = foodAmount+rentAmount+clothesAmount;
             if(sumCostAmount>incomeAmount){
-                errorMessage("OMG! Your expense amount is too high more then your income")
+                errorMessage("OMG! Your expense amount is too high more then your income");
             }else{
-            add("total-expenses", "after-balance", incomeAmount,sumCostAmount);}
+            setInnerText("total-expenses", "after-balance", incomeAmount, sumCostAmount);}
         }
     }
 });
@@ -69,11 +69,13 @@ document.getElementById("save-btn").addEventListener("click", function(){
         const afterBalText = document.getElementById("after-balance");
         const afterBalAmount = parseFloat(afterBalText.innerText);
         // set values in 
-        const saveparcent = incomeAmount*(parcentAmount/100);
-        if(saveparcent>afterBalAmount){
-            errorMessage("Your save amount is more then you have, sorry you can not save more then you jave");
-        }else{
-            add("saving-amount", "remaining-balance", afterBalAmount, saveparcent);
+        const saveParcent = incomeAmount*(parcentAmount/100);
+        if(saveParcent>afterBalAmount){
+            errorMessage("Your save amount is more then you have, sorry you can not save more then you have");
+        }else if(saveParcent<0){
+            errorMessage("Your income input is negetive");
+        } else{
+            setInnerText("saving-amount", "remaining-balance", afterBalAmount, saveParcent);
         }
     }
 });
