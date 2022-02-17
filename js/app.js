@@ -49,7 +49,10 @@ document.getElementById("calculate-btn").addEventListener("click", function(){
             errorMessage("Your field is empty, You can not set empty value")
         }else{
             const sumCostAmount = foodAmount+rentAmount+clothesAmount;
-            add("total-expenses", "after-balance", incomeAmount,sumCostAmount);
+            if(sumCostAmount>incomeAmount){
+                errorMessage("OMG! Your expense amount is too high more then your income")
+            }else{
+            add("total-expenses", "after-balance", incomeAmount,sumCostAmount);}
         }
     }
 });
@@ -67,6 +70,10 @@ document.getElementById("save-btn").addEventListener("click", function(){
         const afterBalAmount = parseFloat(afterBalText.innerText);
         // set values in 
         const saveparcent = incomeAmount*(parcentAmount/100);
-        add("saving-amount", "remaining-balance", afterBalAmount, saveparcent);
+        if(saveparcent>afterBalAmount){
+            errorMessage("Your save amount is more then you have, sorry you can not save more then you jave");
+        }else{
+            add("saving-amount", "remaining-balance", afterBalAmount, saveparcent);
+        }
     }
 });
