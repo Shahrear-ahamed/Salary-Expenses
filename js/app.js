@@ -21,4 +21,15 @@ document.getElementById("calculate-btn").addEventListener("click", function(){
     afterBalanceText.innerText = balance;
 });
 
-
+document.getElementById("save-btn").addEventListener("click", function(){
+    const incomeAmount = getValues("income-input");
+    const parcentAmount = getValues("parcent");
+    const afterBalText = document.getElementById("after-balance");
+    const savingAmountText = document.getElementById("saving-amount");
+    const remainingAmountText= document.getElementById("remaining-balance");
+    const afterBalAmount = parseFloat(afterBalText.innerText);
+    // set values in 
+    const saveparcent = incomeAmount*(parcentAmount/100);
+    savingAmountText.innerText = saveparcent;
+    remainingAmountText.innerText = afterBalAmount-saveparcent;
+});
