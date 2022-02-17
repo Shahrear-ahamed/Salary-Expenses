@@ -24,7 +24,7 @@ document.getElementById("calculate-btn").addEventListener("click", function(){
     if(incomeAmount<0){
         errorMessage("Your income amount are negetive value");
     }else if(isNaN(incomeAmount)){
-        errorMessage("Input any number");
+        errorMessage("Input number only");
     }else{
         // all cost section are here
         const foodAmount = getValues("food-input");
@@ -46,7 +46,7 @@ document.getElementById("calculate-btn").addEventListener("click", function(){
         }else if(foodAmount>0 && rentAmount>0 && clothesAmount<0){
             errorMessage("clothes negetive input are not allow");
         }else if(isNaN(foodAmount) || isNaN(rentAmount) || isNaN(clothesAmount)){
-            errorMessage("Your field is empty, You can not set empty value");
+            errorMessage("Your atleast field is empty, You can not set empty value");
         }else{
             const sumCostAmount = foodAmount+rentAmount+clothesAmount;
             if(sumCostAmount>incomeAmount){
